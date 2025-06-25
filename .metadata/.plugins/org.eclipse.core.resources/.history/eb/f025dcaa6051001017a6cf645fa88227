@@ -1,0 +1,14 @@
+spring.application.name=demo
+
+# H2 en memoria
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=www-data
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# H2 web console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
