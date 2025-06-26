@@ -1,0 +1,53 @@
+package com.example.demo.controller;
+
+
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dto.UserCreateResponseDTO;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+	private final UserService service;
+
+  public UserController(UserService service) {
+    this.service = service;
+  }
+  
+  
+
+//  @PostMapping
+//  public ResponseEntity<User> createUser(@RequestBody User user) {	  
+//
+//	  return ResponseEntity.ok(service.save(user));
+//  }
+
+
+  @PostMapping
+  public ResponseEntity<UserCreateResponseDTO> createUser(@RequestBody User user) {	  
+
+	  User userCreated = service.save(userCreated);
+	  
+	  UserCreateResponseDTO userDTO = new UserCreateResponseDTO();
+	  
+	  userDTO.setId(null);
+	  userDTO.setCreated(null);
+	  userDTO.setLastLogin(null);
+	  userDTO.setModified(null);
+	  userDTO.setToken(null);
+	  userDTO.setIsActive(null);
+	  
+	  return userDTO;
+  }
+
+
+
+
+}

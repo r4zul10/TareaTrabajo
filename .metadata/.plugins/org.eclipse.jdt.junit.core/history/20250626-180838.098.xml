@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DemoApplicationTests" project="demo" tests="1" started="1" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.demo.DemoApplicationTests" time="0.001" displayname="DemoApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.DemoApplicationTests]">
+    <testcase name="contextLoads" classname="com.example.demo.DemoApplicationTests" time="0.001" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.DemoApplicationTests]/[method:contextLoads()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	Syntax error, insert "}" to complete ClassBody
+&#13;
+	at com.example.demo.DemoApplicationTests.&lt;init&gt;(DemoApplicationTests.java:63)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

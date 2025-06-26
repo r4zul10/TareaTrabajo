@@ -1,0 +1,34 @@
+package com.example.demo.service;
+
+import com.example.demo.dto.UserCreateResponseDTO;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+
+import java.util.Date;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+	private final UserRepository userRepository;
+
+	public UserService(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	public User save(User user) {
+		return userRepository.save(user);
+	}
+
+	
+	  UserCreateResponseDTO userDTO = new UserCreateResponseDTO();
+	  UUID uuid = UUID.randomUUID();
+	  userDTO.setId(userCreated.getId());
+	  userDTO.setCreated(new Date().toString());
+	  userDTO.setModified("No se puede modificar un usuario al menos si no se le está enviando el ID");
+	  userDTO.setLastLogin(new Date().toString());
+	  userDTO.setToken( uuid.toString());
+	  userDTO.setIsActive(true);
+}
