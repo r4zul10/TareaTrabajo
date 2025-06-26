@@ -1,15 +1,15 @@
 package com.example.demo.error;
 
 public class ErrorResponse {
-    private String mensaje;
-    private String detalle;
-    private int codigo;
+	private String mensaje;
+	private String detalle;
+	private int codigo;
 
-    public ErrorResponse(String mensaje, String detalle, int codigo) {
-        this.mensaje = mensaje;
-        this.detalle = detalle;
-        this.codigo = codigo;
-    }
+	public ErrorResponse(String mensaje, String detalle, int codigo) {
+		this.mensaje = mensaje;
+		this.detalle = detalle;
+		this.codigo = codigo;
+	}
 
 	public String getMensaje() {
 		return mensaje;

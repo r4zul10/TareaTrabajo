@@ -25,39 +25,37 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 
-@WebMvcTest(UserController.class)
-public class UserControllerTest {
+	@WebMvcTest(UserController.class)
+	public class UserControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+		@Autowired
+		private MockMvc mockMvc;
 
-    @MockBean
-    private UserService service;
+		@MockBean
+		private UserService service;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+		@Autowired
+		private ObjectMapper objectMapper;
 
-    @Test
-    public void testCreateUser() throws Exception {
-        // Simular entrada
-        User user = new User();
-        user.setName("Juan");
-        user.setEmail("juan@test.com");
-        user.setPassword("1234");
+		@Test
+		public void testCreateUser() throws Exception {
+			// Simular entrada
+			User user = new User();
+			user.setName("Juan");
+			user.setEmail("juan@test.com");
+			user.setPassword("1234");
 
-        // Simular retorno del servicio
-        Mockito.when(service.save(Mockito.any(User.class))).thenReturn(user);
+			// Simular retorno del servicio
+			Mockito.when(service.save(Mockito.any(User.class))).thenReturn(user);
 
-        // Realizar POST con MockMvc
-        mockMvc.perform(post("/ruta/de/crear")  // Cambiar a la ruta real
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.token").exists())
-                .andExpect(jsonPath("$.isActive").value(true))
-                .andExpect(jsonPath("$.created").exists())
-                .andExpect(jsonPath("$.lastLogin").exists())
-                .andExpect(jsonPath("$.modified").value("No se puede modificar un usuario al menos si no se le está enviando el ID"));
-    }
-}}
+			// Realizar POST con MockMvc
+			mockMvc.perform(post("/ruta/de/crear") // Cambiar a la ruta real
+					.contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(user)))
+					.andExpect(status().isOk()).andExpect(jsonPath("$.id").exists())
+					.andExpect(jsonPath("$.token").exists()).andExpect(jsonPath("$.isActive").value(true))
+					.andExpect(jsonPath("$.created").exists()).andExpect(jsonPath("$.lastLogin").exists())
+					.andExpect(jsonPath("$.modified")
+							.value("No se puede modificar un usuario al menos si no se le está enviando el ID"));
+		}
+	}
+}

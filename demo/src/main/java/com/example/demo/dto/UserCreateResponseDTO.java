@@ -2,20 +2,18 @@ package com.example.demo.dto;
 
 public class UserCreateResponseDTO {
 
-	private String id;
+	private Long id;
 	private String created;
 	private String modified;
 	private String lastLogin;
 	private String token;
 	private Boolean isActive;
-	
+
 	public UserCreateResponseDTO() {
 
 	}
-	
-	
 
-	public UserCreateResponseDTO(String id, String created, String modified, String lastLogin, String token,
+	public UserCreateResponseDTO(Long id, String created, String modified, String lastLogin, String token,
 			Boolean isActive) {
 		super();
 		this.id = id;
@@ -26,13 +24,11 @@ public class UserCreateResponseDTO {
 		this.isActive = isActive;
 	}
 
-
-
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -75,7 +71,5 @@ public class UserCreateResponseDTO {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-
-	
 
 }

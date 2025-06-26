@@ -1,7 +1,16 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -11,6 +20,10 @@ public class User {
 	private Long id;
 
 	private String name;
+	 @Pattern(
+		        regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$",
+		        message = "El correo debe tener un formato válido (ej: aaaaaaa@dominio.cl)"
+		    )
 	private String email;
 	private String password;
 
