@@ -32,24 +32,30 @@ class DemoApplicationTests {
 		private MockMvc mockMvc;
 
 		@MockBean
-		private UserService userService; // Aunque no se use en el método, debe declararse si está como dependencia
+		private UserService service;
 
 		@Autowired
 		private ObjectMapper objectMapper;
 
 		@Test
-		public void testCreateUserReturnsEmptyUserDTO() throws Exception {
-			// Crear un objeto de entrada simulado
+		public void testCreateUser() throws Exception {
+			// Simular entrada
 			User user = new User();
 			user.setName("Juan");
 			user.setEmail("juan@test.com");
 			user.setPassword("1234");
 
-			// Ejecutar la petición POST
-			mockMvc.perform(post("/ruta/del/post") // ← reemplaza con tu ruta real
+			// Simular retorno del servicio
+			Mockito.when(service.save(Mockito.any(User.class))).thenReturn(user);
+
+			// Realizar POST con MockMvc
+			mockMvc.perform(post("/ruta/de/crear") // Cambiar a la ruta real
 					.contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(user)))
-					.andExpect(status().isOk()).andExpect(jsonPath("$.id").doesNotExist()) // Como el objeto está vacío
-					.andExpect(jsonPath("$.token").doesNotExist());
+					.andExpect(status().isOk()).andExpect(jsonPath("$.id").exists())
+					.andExpect(jsonPath("$.token").exists()).andExpect(jsonPath("$.isActive").value(true))
+					.andExpect(jsonPath("$.created").exists()).andExpect(jsonPath("$.lastLogin").exists())
+					.andExpect(jsonPath("$.modified")
+							.value("No se puede modificar un usuario al menos si no se le está enviando el ID"));
 		}
 	}
 }
